@@ -79,25 +79,6 @@ $zone = file_get_contents($zoneUrl, false, $zoneContext);
                                 <br/>
                                 <h2>EC2 Instance ID: <?php echo $instance_id; ?></h2>
                                 <h2>Zone: <?php echo  $zone; ?></h2>
-
-<?php
-  # Include RDS configuration
-  include 'rds.conf.php';
-  if ($RDS_URL == "") {
-        # RDS not configured, so show load generation info
-        # Get the instance CPU Load
-        echo "<h3>CPU Load: ";
-        include 'getcpuload.php';
-        echo "</h3></br></br>";
-
-        # Get the instance CPU Load Generation form
-        include 'putcpuload.php';
-
-        # Check to see if genload session variable has been set, if so, refresh periodically
-        session_start();
-        if (isset($_SESSION['genload'])) echo "<meta http-equiv=\"refresh\" content=\"5\" />";
-  } 
-?>
                         </center>
                         </div>
                         <!--  end table-content  -->
